@@ -1313,7 +1313,7 @@ void movesub()//物体移动的数据处理
 				p1.img1=p1.img;
 				yanmatu(&(p1.img1));
 			}
-		if ((GetAsyncKeyState('S') &0x8000) && p1.r.bottom<width) 
+		if ((GetAsyncKeyState('S') &0x8000) && p1.r.bottom<width-(width-sealevel)*1/3) 
 			{
 				p1.y+=p1.v;
 				p1.r.top=p1.y;
@@ -1616,7 +1616,7 @@ void moveplane()//物体移动的数据处理
 				p1.img1=p1.img;
 				yanmatu(&(p1.img1));
 			}
-		if ((GetAsyncKeyState('W') &0x8000) && p1.r.top>0) 
+		if ((GetAsyncKeyState('W') &0x8000) && p1.r.top>sealevel*1/3) 
 			{
 				p1.y-=p1.v;
 				p1.r.bottom=p1.y+p1.img.getheight();
@@ -1987,11 +1987,11 @@ bool Careergame(int bulletn,int dropn,int subn,int planen,int sbombn,int pbombn,
 	while (result)
 	{
 		bool o=false;
-		int k,x=1280,y=0; 
+		int k,x=length,y=0; 
 		FlushConsoleInputBuffer(GetStdHandle(STD_INPUT_HANDLE));
 		FlushMouseMsgBuffer();
 		gameinitialize();//游戏初始化
-		for (k=70;k>1;k--)
+		for (k=sqrt(length*4);k>1;k--)
 		{
 			putimage(x,y,&fight);
 			x-=k/2;
@@ -1999,7 +1999,7 @@ bool Careergame(int bulletn,int dropn,int subn,int planen,int sbombn,int pbombn,
 			chanvolume("fightbgm",0,1000,7);
 			Sleep(7);
 		}
-		for (k=1;k<25;k++)
+		for (k=1;k<25*length/1280;k++)
 		{
 			putimage(x,y,&fight);
 			x-=2;
@@ -2009,7 +2009,7 @@ bool Careergame(int bulletn,int dropn,int subn,int planen,int sbombn,int pbombn,
 		}
 
 		level(bulletn,dropn,0,0,0,0);
-		for (k=5;k<=72;k++)
+		for (k=5;k<=sqrt(length*4);k++)
 		{
 			judge();
 			move();
@@ -2066,9 +2066,9 @@ bool Careergame(int bulletn,int dropn,int subn,int planen,int sbombn,int pbombn,
 			}
 			nowtime=time(NULL)-starttime;
 			if (pausestate==false)
-			if (score>goal) result=0;
+			if (score>=goal) result=0;
 		}
-		if (score>goal) 
+		if (score>=goal) 
 		{
 			whetherrand=false;
 				for (k=1;k<=350;k++)
@@ -2115,29 +2115,29 @@ bool Normalgame(int bulletn,int dropn,int subn,int planen,int sbombn,int pbombn,
 	while (result)
 	{
 		bool o=false;
-		int x=1280,y=0; 
+		int x=length,y=0; 
 		FlushConsoleInputBuffer(GetStdHandle(STD_INPUT_HANDLE));
 		FlushMouseMsgBuffer();
 		gameinitialize();//游戏初始化
 		level(bulletn,dropn,0,0,0,0);
 
-		for (k=70;k>1;k--)
+		for (k=sqrt(length*4);k>1;k--)
 		{
 			putimage(x,y,&fight);
 			x-=k/2;
 			FlushBatchDraw();
-			chanvolume("bgm",0,1000,7);
+			chanvolume("fightbgm",0,1000,7);
 			Sleep(7);
 		}
-		for (k=1;k<25;k++)
+		for (k=1;k<25*length/1280;k++)
 		{
 			putimage(x,y,&fight);
 			x-=2;
 			FlushBatchDraw();
-			chanvolume("bgm",0,1000,10);
+			chanvolume("fightbgm",0,1000,10);
 			Sleep(10);
 		}
-		for (k=1;k<=72;k++)
+		for (k=1;k<=sqrt(length*4);k++)
 		{
 			judge();
 			move();
@@ -2274,7 +2274,7 @@ void Infinitemode(int nbullet,int ndrop,int nsub,int nplane,int nsbomb,int npbom
 	//key config  level  quality  time  life
 	int k; IMAGE timg;
 	TCHAR cmd[256]; // 媒体命令
-	int leveluptime=14;//升级时间
+	int leveluptime=10;//升级时间
 	result=true;
 	mciSendString(_T("open \"Resource\\music\\fightbgm.mp3\" alias fightbgm"), NULL, 0, NULL);
 	mciSendString(_T("play fightbgm repeat"), NULL, 0, NULL);// 播放音乐
@@ -2286,25 +2286,25 @@ void Infinitemode(int nbullet,int ndrop,int nsub,int nplane,int nsbomb,int npbom
 		FlushConsoleInputBuffer(GetStdHandle(STD_INPUT_HANDLE));
 		FlushMouseMsgBuffer();
 		gameinitialize();//游戏初始化	
-		for (k=70;k>1;k--)
+		for (k=sqrt(length*4);k>1;k--)
 		{
 			putimage(x,y,&fight);
 			x-=k/2;
 			FlushBatchDraw();
-			chanvolume("fightbgm",0,1001,7);
+			chanvolume("fightbgm",0,1000,7);
 			Sleep(7);
 		}
-		for (k=1;k<25;k++)
+		for (k=1;k<25*length/1280;k++)
 		{
 			putimage(x,y,&fight);
 			x-=2;
 			FlushBatchDraw();
-			chanvolume("fightbgm",0,1001,10);
+			chanvolume("fightbgm",0,1000,10);
 			Sleep(10);
 		}
 
 		level(nbullet,ndrop,0,0,0,0);
-		for (k=1;k<=72;k++)
+		for (k=1;k<=sqrt(length*4);k++)
 		{
 			judge();
 			move();
@@ -2333,7 +2333,7 @@ void Infinitemode(int nbullet,int ndrop,int nsub,int nplane,int nsbomb,int npbom
 					draw(1);
 					FlushBatchDraw();//统一输出图像
 				}
-			mode=modechoose(mode,0,0);
+			mode=modechoose(mode,100,200);
 			switch (mode)
 			{
 				case 1:	movesub();break;
@@ -2355,7 +2355,7 @@ void Infinitemode(int nbullet,int ndrop,int nsub,int nplane,int nsbomb,int npbom
 			if (nowtime==time(NULL)-starttime-1 && mode==3)
 				score-=15;
 			if (nowtime==time(NULL)-starttime-1 && mode==1)
-				score-=30;
+				score-=20;
 			nowtime=time(NULL)-starttime;
 
 			if (pausestate==false)
@@ -2415,7 +2415,7 @@ void career()//生涯模式
 	}
 	if (o==false)
 	{
-		for (i=1;i<1000;i++)
+		for (i=1;i<1100;i++)
 		{
 			Sleep(10);
 			if (kbhit()) 
@@ -2444,7 +2444,7 @@ void career()//生涯模式
 		}	
 		if (o==false)
 		{
-			for (i=1;i<900;i++)
+			for (i=1;i<1000;i++)
 			{
 				Sleep(10);
 				if (kbhit()) 
@@ -2706,7 +2706,7 @@ void init()//游戏开始界面
 	IMAGE loading,imgbtn1,imgbtn2;
 	IMAGE background1,rankimgl,rankimgr;//背景图
 	int k; float n=1.1; char c=66;
-	loadimage(&loading,_T("IMAGE"), _T("loading"),length,width);
+	loadimage(&loading,_T("IMAGE"), _T("loading"),width*16/9,width);
 	for (k=0;k<=100;k++)
 	{
 		shade(k,0,0,loading);//处理图片明暗
@@ -2714,28 +2714,28 @@ void init()//游戏开始界面
 	}
 	loadimage(&background1,_T("IMAGE"), _T("start"),width*16/9,width);
 	loadimage(&oceanbkg,_T("IMAGE"), _T("oceanbkg"),width*16/9,width);
-	loadimage(&careerbtn,_T("IMAGE"), _T("career"),length,width);
-	loadimage(&crew,_T("IMAGE"), _T("crew"),length,width);
-	loadimage(&difficult,_T("IMAGE"), _T("difficult"),length,width);
-	loadimage(&easy,_T("IMAGE"), _T("easy"),length,width);
-	loadimage(&endless,_T("IMAGE"), _T("endless"),length,width);
-	loadimage(&exitbtn,_T("IMAGE"), _T("exit"),length,width);
-	loadimage(&guild,_T("IMAGE"), _T("guild"),length,width);
-	loadimage(&medium,_T("IMAGE"), _T("medium"),length,width);
-	loadimage(&menu,_T("IMAGE"), _T("menu"),length,width);
-	loadimage(&normalmenu,_T("IMAGE"), _T("normalmenu"),length,width);
-	loadimage(&normal,_T("IMAGE"), _T("normal"),length,width);
-	loadimage(&optionsmenu,_T("IMAGE"), _T("optionsmenu"),length,width);
-	loadimage(&options,_T("IMAGE"), _T("options"),length,width);
-	loadimage(&rank,_T("IMAGE"), _T("rank"),length,width);
-	loadimage(&retry,_T("IMAGE"), _T("retry"),length,width);
-	loadimage(&help,_T("IMAGE"), _T("help"),length,width);
-	loadimage(&namelist,_T("IMAGE"), _T("namelist"),length,width);
-	loadimage(&youwin,_T("IMAGE"), _T("youwin"),length,width);
-	loadimage(&beginning,_T("IMAGE"), _T("beginning"),length,width);
-	loadimage(&rankimg,_T("IMAGE"), _T("rankimg"),length,width);
-	loadimage(&rankimgl,_T("IMAGE"), _T("rankimgl"),length,width);
-	loadimage(&rankimgr,_T("IMAGE"), _T("rankimgr"),length,width);
+	loadimage(&careerbtn,_T("IMAGE"), _T("career"),width*16/9,width);
+	loadimage(&crew,_T("IMAGE"), _T("crew"),width*16/9,width);
+	loadimage(&difficult,_T("IMAGE"), _T("difficult"),width*16/9,width);
+	loadimage(&easy,_T("IMAGE"), _T("easy"),width*16/9,width);
+	loadimage(&endless,_T("IMAGE"), _T("endless"),width*16/9,width);
+	loadimage(&exitbtn,_T("IMAGE"), _T("exit"),width*16/9,width);
+	loadimage(&guild,_T("IMAGE"), _T("guild"),width*16/9,width);
+	loadimage(&medium,_T("IMAGE"), _T("medium"),width*16/9,width);
+	loadimage(&menu,_T("IMAGE"), _T("menu"),width*16/9,width);
+	loadimage(&normalmenu,_T("IMAGE"), _T("normalmenu"),width*16/9,width);
+	loadimage(&normal,_T("IMAGE"), _T("normal"),width*16/9,width);
+	loadimage(&optionsmenu,_T("IMAGE"), _T("optionsmenu"),width*16/9,width);
+	loadimage(&options,_T("IMAGE"), _T("options"),width*16/9,width);
+	loadimage(&rank,_T("IMAGE"), _T("rank"),width*16/9,width);
+	loadimage(&retry,_T("IMAGE"), _T("retry"),width*16/9,width);
+	loadimage(&help,_T("IMAGE"), _T("help"),width*16/9,width);
+	loadimage(&namelist,_T("IMAGE"), _T("namelist"),width*16/9,width);
+	loadimage(&youwin,_T("IMAGE"), _T("youwin"),width*16/9,width);
+	loadimage(&beginning,_T("IMAGE"), _T("beginning"),width*16/9,width);
+	loadimage(&rankimg,_T("IMAGE"), _T("rankimg"),width*16/9,width);
+	loadimage(&rankimgl,_T("IMAGE"), _T("rankimgl"),width*16/9,width);
+	loadimage(&rankimgr,_T("IMAGE"), _T("rankimgr"),width*16/9,width);
 
 	bool flag=true,smenubgm=1,sfightbgm=0,slonglong=0,soneday=0;int vol;
 
