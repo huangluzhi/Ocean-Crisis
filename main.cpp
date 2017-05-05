@@ -1991,7 +1991,7 @@ bool Careergame(int bulletn,int dropn,int subn,int planen,int sbombn,int pbombn,
 		FlushConsoleInputBuffer(GetStdHandle(STD_INPUT_HANDLE));
 		FlushMouseMsgBuffer();
 		gameinitialize();//游戏初始化
-		for (k=sqrt(length*4);k>1;k--)
+		for (k=sqrt(length*4)-1;k>1;k--)
 		{
 			putimage(x,y,&fight);
 			x-=k/2;
@@ -2121,7 +2121,7 @@ bool Normalgame(int bulletn,int dropn,int subn,int planen,int sbombn,int pbombn,
 		gameinitialize();//游戏初始化
 		level(bulletn,dropn,0,0,0,0);
 
-		for (k=sqrt(length*4);k>1;k--)
+		for (k=sqrt(length*4)-1;k>1;k--)
 		{
 			putimage(x,y,&fight);
 			x-=k/2;
@@ -2286,7 +2286,7 @@ void Infinitemode(int nbullet,int ndrop,int nsub,int nplane,int nsbomb,int npbom
 		FlushConsoleInputBuffer(GetStdHandle(STD_INPUT_HANDLE));
 		FlushMouseMsgBuffer();
 		gameinitialize();//游戏初始化	
-		for (k=sqrt(length*4);k>1;k--)
+		for (k=sqrt(length*4)-1;k>1;k--)
 		{
 			putimage(x,y,&fight);
 			x-=k/2;
