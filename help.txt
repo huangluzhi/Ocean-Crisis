@@ -1,0 +1,44 @@
+Game control (it is recommended that two people play unless you are confident in your left and right brain coordination):
+Upper w
+Lower S
+Left a
+Right d
+Bomb space bar
+Shooting left mouse button
+Variable submarine J (only in infinite mode)
+Change ship K (only in infinite mode)
+Variable plane L (only in infinite mode)
+Tips:
+The higher the explosive speed, the higher the score of the enemy aircraft or submarine
+It takes a certain score to launch the shell. Please aim and then start: -)
+The final score of the game must be greater than 0 to be included in the ranking
+In infinite mode:
+Be careful not to blow up marine life, but when you become a submarine, you can catch it as a food supply.
+When it becomes an aircraft or submarine, the energy consumed will increase greatly, and the fraction will decrease slowly with time.
+Enjoy!
+PS: you can open two windows and play at the same time: -)
+
+*************************************************************************************
+
+游戏控制(建议两人玩除非你对自己左右脑配合足够自信）：
+上                   w
+下                   s
+左                   a
+右                   d
+投弹                空格键
+射击                鼠标左键
+变潜艇             j（仅在无尽模式中）
+变船                k（仅在无尽模式中）
+变飞机             l（仅在无尽模式中）
+
+Tips:
+炸毁速度越高的敌机或潜艇得到分数越高
+发射炮弹需要消耗一定分数，请瞄准再下手 :-)
+游戏最终得分至少要大于0才能计入排行榜
+在无尽模式中：
+注意别炸到海洋生物，但变成潜艇时可以捕捉作为食物补给
+变成飞机或潜艇时，消耗的能量会大大增高，分数会随时间慢慢减少
+
+Enjoy!
+
+ps:你可以同时开两个窗口然后两个同时玩 :-)
