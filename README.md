@@ -10,3 +10,5 @@ How to open this project:
 3. Open the file "Ocean Crisis.dsw" with Visual C++.
 
 4. Completed!
+
+Demo video: https://www.bilibili.com/video/BV154411N7RV/
