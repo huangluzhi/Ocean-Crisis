@@ -11,4 +11,4 @@ How to open this project:
 
 4. Completed!
 
-Demo video: https://www.bilibili.com/video/BV154411N7RV/
+Game Review: https://www.bilibili.com/video/BV154411N7RV/
