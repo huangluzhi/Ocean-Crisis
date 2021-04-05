@@ -1,5 +1,5 @@
 # Ocean-Crisis
-A game of 2D WAR by KARABAC
+A 2D game of Sea Warfare by KARABAC
 
 How to open this project:
 
